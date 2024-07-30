@@ -6,11 +6,11 @@ export class Store {
   }
 
   get storageKey() {
-    return this.key + Storage.prefix
+    return this.key + Store.prefix
   }
 
   get expiryKey() {
-    return `_expiry${Storage.prefix}`
+    return `_expiry${Store.prefix}`
   }
 
   get value() {
