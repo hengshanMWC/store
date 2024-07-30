@@ -1,17 +1,14 @@
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
-  entries: [
-    'src/index.ts',
-  ],
+  entries: ['src/index.js'],
   clean: true,
   failOnWarn: false,
-  declaration: true,
   rollup: {
     emitCJS: true,
     inlineDependencies: true,
-    dts: {
-      respectExternal: false,
-    },
+    // dts: {
+    //   respectExternal: false,
+    // },
   },
 })
