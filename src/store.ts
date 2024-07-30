@@ -1,6 +1,11 @@
+interface StoreParams {
+  expiry: number
+}
 export class Store {
   static prefix = '_storage'
-  constructor(key, { expiry = -1 } = { expiry: -1 }) {
+  key: string
+  expiry: number
+  constructor(key: string, { expiry = -1 }: StoreParams = { expiry: -1 }) {
     this.key = key
     this.expiry = Number(expiry)
   }
@@ -16,10 +21,10 @@ export class Store {
   get value() {
     const value = localStorage.getItem(this.storageKey)
     let data
-    try {
-      data = JSON.parse(value)
-    } catch {
+    if (value === null) {
       data = value
+    } else {
+      data = JSON.parse(value)
     }
     // 过期时间为-1
     if (
@@ -45,7 +50,6 @@ export class Store {
       _value = value
     }
     localStorage.setItem(this.storageKey, _value)
-    return value
   }
 
   remove() {

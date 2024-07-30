@@ -1,8 +1,8 @@
 import { Store } from './store'
 
 export class StoreData {
+  storage: Store
   constructor(key, { expiry = -1 } = { expiry: -1 }) {
-    this.expiry = Number(expiry)
     this.storage = new Store(`${key}_storeData`, {
       expiry,
     })
@@ -30,6 +30,7 @@ export class StoreData {
       data = key
     }
     this.storage.value = data
+    return this
   }
 
   removeItem(key) {
@@ -40,6 +41,7 @@ export class StoreData {
       delete data[key]
       this.storage.value = data
     }
+    return this
   }
 }
 
