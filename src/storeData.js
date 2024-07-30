@@ -3,7 +3,7 @@ import { Store } from './store'
 export class StoreData {
   constructor(key, { expiry = -1 } = { expiry: -1 }) {
     this.expiry = Number(expiry)
-    this.storage = new Store(`${key}_storeArray`, {
+    this.storage = new Store(`${key}_storeData`, {
       expiry,
     })
     this.getValue()
