@@ -10,9 +10,9 @@ export class StoreData {
   }
 
   getValue() {
-    const data = this.storage.value
+    let data = this.storage.value
     if (!isPlainObject(data)) {
-      this.storage.value = {}
+      this.storage.value = data = {}
     }
     return data
   }
